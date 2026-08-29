@@ -324,3 +324,7 @@ html, body {
 
     accent-color: #ff9d00;
 }
+.music-bars.paused span {
+    animation-play-state: paused;
+    height: 7px;
+}
