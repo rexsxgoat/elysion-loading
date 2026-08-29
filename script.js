@@ -59,3 +59,84 @@
     setProgress(fallback);
   }, 80);
 })();
+const music = document.getElementById("music");
+const muteBtn = document.getElementById("muteBtn");
+const volume = document.getElementById("volume");
+const bars = document.querySelector(".music-bars");
+
+// Volume de départ : 25 %
+music.volume = 0.25;
+
+// =========================
+// AUTOPLAY
+// =========================
+
+function startMusic() {
+    music.volume = 0.25;
+
+    const promise = music.play();
+
+    if (promise !== undefined) {
+        promise
+            .then(() => {
+                bars.classList.remove("paused");
+            })
+            .catch(() => {
+                // Autoplay bloqué :
+                // la musique pourra être lancée par le bouton
+                bars.classList.add("paused");
+            });
+    }
+}
+
+startMusic();
+
+// =========================
+// MUTE / UNMUTE
+// =========================
+
+muteBtn.addEventListener("click", () => {
+
+    if (music.muted) {
+
+        music.muted = false;
+
+        muteBtn.textContent = "🔊";
+
+        bars.classList.remove("paused");
+
+    } else {
+
+        music.muted = true;
+
+        muteBtn.textContent = "🔇";
+
+        bars.classList.add("paused");
+    }
+});
+
+// =========================
+// VOLUME
+// =========================
+
+volume.addEventListener("input", () => {
+
+    music.volume = volume.value;
+
+    if (music.volume === 0) {
+
+        music.muted = true;
+
+        muteBtn.textContent = "🔇";
+
+        bars.classList.add("paused");
+
+    } else {
+
+        music.muted = false;
+
+        muteBtn.textContent = "🔊";
+
+        bars.classList.remove("paused");
+    }
+});
