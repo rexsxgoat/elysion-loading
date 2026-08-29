@@ -31,5 +31,43 @@
   </main>
 
   <script src="script.js"></script>
+  <div class="music-player">
+    <div class="music-left">
+        <div class="music-icon">
+            ♪
+        </div>
+
+        <div class="music-info">
+            <span class="music-title">Virus - Wernenoi</span>
+            <span class="music-subtitle">Carré</span>
+        </div>
+    </div>
+
+    <div class="music-bars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <button id="muteBtn" class="mute-btn">
+        🔊
+    </button>
+
+    <input
+        id="volume"
+        class="volume-slider"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.25"
+    >
+
+    <audio id="music" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+</div>
 </body>
 </html>
